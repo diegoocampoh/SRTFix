@@ -40,6 +40,7 @@ public class SRTParser {
                     subtitle.setFromTime(stringToTimestamp(timeData[0]));
                     subtitle.setToTime(stringToTimestamp(timeData[1]));
                     
+                    
                     String content;
                     while(i < lines.length -1 && !(content = lines[++i]).isEmpty() && content != null){
                          subtitle.setContents(subtitle.getContents()+content);
@@ -53,6 +54,8 @@ public class SRTParser {
         }
         return list;        
     }
+    
+    
     
     private static Timestamp stringToTimestamp(String value) throws ParseException{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss,SSS");
