@@ -19,9 +19,9 @@ import srtfix.Subtitle;
  */
 public class AddOffsetFilter implements Filter {
 
-    private final int milisecs;
+    private final long milisecs;
 
-    public AddOffsetFilter(int milisecs) {
+    public AddOffsetFilter(long milisecs) {
         this.milisecs = milisecs;
     }
     
@@ -47,10 +47,12 @@ public class AddOffsetFilter implements Filter {
         return result;
     }
 
-    private Date addOffset(Date oldDate, int calendarType, int offset) {
+    private Date addOffset(Date oldDate, int calendarType, long offset) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(oldDate);
-        cal.add(calendarType, offset);
+        long currentMilis = cal.getTimeInMillis();
+        currentMilis += offset;
+        cal.setTimeInMillis(currentMilis);
         return cal.getTime();
     }
 
