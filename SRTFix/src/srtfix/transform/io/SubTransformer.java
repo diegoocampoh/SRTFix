@@ -16,6 +16,7 @@ import srtfix.Subtitle;
  */
 public interface SubTransformer {
     
+    public String getFileExtension();
     
     public Collection<String> transform(Collection<Subtitle> subs);
     

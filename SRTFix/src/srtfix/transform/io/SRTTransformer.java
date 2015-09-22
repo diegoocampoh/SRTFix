@@ -24,6 +24,7 @@ public class SRTTransformer implements SubTransformer {
 
     private static final String numericRegex = "[0-9]+";
     private static final String NEW_LINE = System.getProperty("line.separator");
+    private static final String FILE_EXT = ".srt";
 
     @Override
     public Collection<String> transform(Collection<Subtitle> subs) {
@@ -88,6 +89,11 @@ public class SRTTransformer implements SubTransformer {
         sb.append(sub.getContents());
         sb.append(NEW_LINE);
         return sb.toString();
+    }
+
+    @Override
+    public String getFileExtension() {
+        return FILE_EXT;
     }
 
 }
