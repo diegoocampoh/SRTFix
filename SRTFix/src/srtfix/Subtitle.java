@@ -57,20 +57,7 @@ public class Subtitle {
         return "Subtitle{" + "ordinal=" + ordinal + ", fromTime=" + fromTime + ", toTime=" + toTime + ", contents=" + contents + '}';
     }
     
-    public String toSRT(){
-        String newLine = System.getProperty("line.separator");
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss,SSS");
-        StringBuilder sb = new StringBuilder();
-        sb.append(this.getOrdinal());
-        sb.append(newLine);
-        sb.append(sdf.format(this.getFromTime()));
-        sb.append(" --> ");
-        sb.append(sdf.format(this.getToTime()));
-        sb.append(newLine);
-        sb.append(this.getContents());
-        sb.append(newLine);
-        return sb.toString();
-    }
+   
     
     
 }
