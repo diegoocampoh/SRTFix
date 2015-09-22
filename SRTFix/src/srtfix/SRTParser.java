@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class SRTParser {
     
     private static final String numericRegex = "[0-9]+";
-    private static final String NEW_LINE = System.getProperty("line.separator");
+    
     public static Collection<Subtitle> getSubtitles(String[] lines){
         
         List<Subtitle> list = new ArrayList<Subtitle>(lines.length / 3);
@@ -43,12 +43,7 @@ public class SRTParser {
                     
                     String content;
                     while(i < lines.length -1 && !(content = lines[++i]).isEmpty() && content != null){
-                        if (subtitle.getContents().isEmpty()){
-                            subtitle.setContents(content);
-                        } else{
-                            subtitle.setContents(subtitle.getContents()+NEW_LINE + content);
-                        }
-                        
+                         subtitle.setContents(subtitle.getContents()+content);
                     }
                    
                     list.add(subtitle);
