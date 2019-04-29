@@ -10,15 +10,21 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 /**
- *
  * @author docampo
  */
 public class Subtitle {
-    
+
     private int ordinal;
     private Timestamp fromTime;
     private Timestamp toTime;
     private String contents = "";
+
+    public Subtitle(int ordinal, Timestamp fromTime, Timestamp toTime, String contents) {
+        this.ordinal = ordinal;
+        this.fromTime = fromTime;
+        this.toTime = toTime;
+        this.contents = contents;
+    }
 
     public int getOrdinal() {
         return ordinal;
@@ -56,8 +62,6 @@ public class Subtitle {
     public String toString() {
         return "Subtitle{" + "ordinal=" + ordinal + ", fromTime=" + fromTime + ", toTime=" + toTime + ", contents=" + contents + '}';
     }
-    
-   
-    
-    
+
+
 }

@@ -48,8 +48,7 @@ public class SRTFix {
         SRTFix fixer = new SRTFix();
         
         String fileName = "src/John.Wick.2014.720p.BluRay.x264.YIFY.srt";
-        
-       
+
         Collection<String> lines = ManejadorArchivosGenerico.leerArchivo(fileName, LOCAL_CAHRSET);
         
         SubTransformer transformer = fixer.getSubTransformerInstance(fileName);
@@ -62,14 +61,9 @@ public class SRTFix {
         } catch (ParseException ex) {
             Logger.getLogger(SRTFix.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
+
         Collection<Subtitle> lista = transformer.parse(lines);
-      
-                
         Collection<String> output = transformer.transform(filterMove.filter(filter1.filter(lista)));
-    
         ManejadorArchivosGenerico.escribirArchivo(fileName+".fix", output, LOCAL_CAHRSET);
     }
 
@@ -77,15 +71,12 @@ public class SRTFix {
         initTransformers();
     }
     
-    
-    
-    
+
     private void initTransformers(){
          //cambiar esto por reflection:
         SubTransformer transformer = new SRTTransformer();
         transformers.add(transformer);
         transformersMap.put(transformer.getFileExtension(), transformer);
-        
     }
     
     private SubTransformer getSubTransformerInstance(String filename){

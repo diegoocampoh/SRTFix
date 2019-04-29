@@ -5,24 +5,26 @@
  */
 package srtfix.transform.filter;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-
 import srtfix.Subtitle;
+
+import java.sql.Timestamp;
+import java.util.*;
 
 /**
  * @author docampo
  */
-public class AddOffsetFilter implements Filter {
+public class FixDesyncFilter implements Filter {
 
-    private final long milisecs;
+    private final int initOrdinal;
+    private final int endOrdinal;
+    private Timestamp initTime;
+    private Timestamp endTime;
 
-    public AddOffsetFilter(long milisecs) {
-        this.milisecs = milisecs;
+    public FixDesyncFilter(int initOrdinal, int endOrdinal, Timestamp initTime, Timestamp endTime) {
+        this.initOrdinal = initOrdinal;
+        this.endOrdinal = endOrdinal;
+        this.initTime = initTime;
+        this.endTime = endTime;
     }
 
     private Collection<Subtitle> addOffset(Collection<Subtitle> subtitles) {
